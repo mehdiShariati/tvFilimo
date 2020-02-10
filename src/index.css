@@ -11,3 +11,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+a{
+  text-decoration: none;
+  background-color: transparent;
+}
+img{
+  border-style: none;
+}
+html, body {
+  height: 100%;
+  direction: rtl;
+  font-family: IRANSans, sans-serif, serif;
+  font-weight: normal;
+  padding: 0px;
+  margin: 0px;
+  background: rgb(38, 38, 38);
+  overflow: hidden;
+}
+
+body {
+  line-height: 2.4rem;
+  user-select: none;
+  cursor: default;
+}
+button, [type="button"], [type="reset"], [type="submit"] {
+  -webkit-appearance: button;
+}
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+button, input {
+  overflow: visible;
+}
+button, select {
+  text-transform: none;
+}
