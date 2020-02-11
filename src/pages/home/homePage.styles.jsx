@@ -8,7 +8,7 @@ width: 100%;
     height: 100vh;
     box-sizing: border-box;
     padding: 8rem 4rem 0px 0px;
-    overflow: hidden;
+  
     margin: 0px;
 
 `;

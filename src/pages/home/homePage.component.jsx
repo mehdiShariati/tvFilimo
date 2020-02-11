@@ -9,10 +9,16 @@ import {HomePageContainer,
     TagnameButton,
 
 } from "./homePage.styles";
+
+
+import ContentRow from "../../components/content-row/content-row.component";
+
 import {connect} from "react-redux";
 const HomePage=({contents})=>{
-    const dataaa=contents.list.list_data.filter(fil=>fil.data !== null).filter(fil=>{return fil.info.title});
-    console.log({dataaa});
+   const dataaa=contents.list.list_data.filter((fil,index)=>index > 0);
+   const tags=contents.list.list_data.filter((fil,index)=>index == 0);
+
+    console.log({tags});
 
 
 
@@ -31,13 +37,9 @@ return(
         <ContentCategory>
 
         <HorizontalListWrapper>
-
-            <TagnameButton>تست ۱</TagnameButton>
-            <TagnameButton>تست ۱</TagnameButton>
-            <TagnameButton>تست ۱</TagnameButton>
-            <TagnameButton>تست ۱</TagnameButton>
-            <TagnameButton>تست ۱</TagnameButton>
-            <TagnameButton>تست ۱</TagnameButton>
+{tags[0].data.map(item=>( <TagnameButton key={item.item_id}>{item.title}</TagnameButton>))}
+           
+        
 
 
         </HorizontalListWrapper>
@@ -51,6 +53,11 @@ return(
     </ListContainer>
 
     </div>
+
+    {dataaa.map(item=>(<ContentRow key={item.info.unique_id} title={item.info.title} movieArray={item.data} />))}
+   
+
+
 
 
 </HomePageContainer>

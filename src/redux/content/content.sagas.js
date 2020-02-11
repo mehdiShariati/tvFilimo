@@ -7,11 +7,12 @@ import {startFetchingContentsSuccessFull,
 
 
 export function* fetchContent(){
-
+    const config={headers:{
+        UserAgent:`{"an":"Filimo","os":"tv"}`
+    }}
     try{
         
-
-        const contents=yield axios.get("https://cors-anywhere.herokuapp.com/https://www.filimo.com/etc/api/list/listtype/home/listperpage/5/listcuroffset/0");
+        const contents=yield axios.get("https://cors-anywhere.herokuapp.com/https://www.filimo.com/etc/api/list/listtype/home/listperpage/5/listcuroffset/0",config);
         yield put(startFetchingContentsSuccessFull(contents.data));
 
 
