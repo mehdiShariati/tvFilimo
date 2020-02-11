@@ -3,6 +3,7 @@ const INITIAL_STATE={
     currentUser:null,
     isLoginDataFetched:false,
     loginData:null,
+    userProfile:null,
     error:null
 }
 
@@ -22,6 +23,22 @@ const userReducer=(state=INITIAL_STATE,action)=>{
                     error:action.payload
 
                 }
+                case userTypes.CHECK_USER_SUCCESS:
+                    return{
+                        ...state,
+                        currentUser:action.payload
+                        
+                    }
+                    case userTypes.CHECK_USER_FAILURE:
+                        return{
+                            ...state,
+                            error:action.payload
+                        }
+                        case userTypes.ADD_USER_PROFILE:
+                            return{
+                                ...state,
+                                userProfile:action.payload
+                            }
 
                 default:
                     return state;
