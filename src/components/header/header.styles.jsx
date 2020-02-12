@@ -8,7 +8,7 @@ width: 100%;
     position: fixed;
     top: 0px;
     left: 0px;
-    z-index: 1;
+    z-index: 10;
     padding: 2rem 0px;
     border-top: 0.3rem solid rgb(253, 193, 60);
 

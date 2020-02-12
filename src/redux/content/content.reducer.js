@@ -2,7 +2,9 @@ import ContentTypes from "./content.types";
 const INITIAL_STATE={
     content:null,
     isDataFetching:false,
-    error:null
+    error:null,
+    movieContent:null,
+    isMovieLoading:false
 }
 
 const ContentReducer=(state=INITIAL_STATE,action)=>{
@@ -21,6 +23,28 @@ const ContentReducer=(state=INITIAL_STATE,action)=>{
                     error:action.payload,
                     isDataFetching:false
                 }
+
+                case ContentTypes.MOVIE_FETCHING_FAILURE:
+                    return{
+                        ...state,
+                        movieContent:null,
+                        isMovieLoading:false,
+                        error:action.payload
+                    }
+
+                    case ContentTypes.MOVIE_FETCHING_SUCCESS:
+                        return{
+                            ...state,
+                            movieContent:action.payload,
+                            isMovieLoading:true,
+
+                        }
+                        case ContentTypes.MOVIE_FETCHING_START:
+                            return{
+                                ...state,
+                                movieContent:null,
+                                isMovieLoading:false
+                            }
 
             default:
                 return state;

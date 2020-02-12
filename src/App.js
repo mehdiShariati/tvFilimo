@@ -8,7 +8,7 @@ import {fetchLoginData} from "./redux/user/user.action";
 import {connect} from "react-redux";
 import Profile from "./components/profile/profile.component";
 import HomePage from "./pages/home/homePage.component";
-
+import VideoDetail from "./pages/video-details/video-detail.component";
 import {startFetchingContents} from "./redux/content/content.actions";
 
 const SignInpageWithSpinner=WithSpinner(SignIn);
@@ -38,7 +38,7 @@ function App({isContentLoaded,startgettingData,startFetchingLoginData,Loading,Lo
       <Route exact path="/" render={props=><HomePageWithSpinner isLoading={!isContentLoaded} {...props} />} />
       <Route exact path="/signin" render={props=>currentUSer ? (<Redirect to="/" />) : (<SignInpageWithSpinner isLoading={!Loading} {...props} data={LoginCred} />)}  />
       {currentUSer ? (<Route exact path="/profile" component={Profile} />) : '' }
-
+      <Route exact path="/m/:movieId" component={VideoDetail} />
       
 
       </Switch>
