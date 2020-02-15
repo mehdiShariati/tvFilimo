@@ -11,9 +11,22 @@ import {
     Descriptionparagraph,
     MovieDetailSpan
 } from "./video-content.styles";
+import VideoJsPlayer from "../video-js-player/video-js-player.component";
 
 
- const VideoContent=({movieData})=>(
+ const VideoContent=({movieData})=>{
+     
+
+
+    const videoJsOptions = {
+        autoplay: false,
+        controls: true,
+        sources: [{
+          src: `https://cors-anywhere.herokuapp.com/${movieData.movie.movie_src}`,
+          type: "application/x-mpegURL"
+        }]
+      }
+    return(
     <Contentdiv>
     <MovieDetailsWrapper>
         <DetailRow>
@@ -42,8 +55,7 @@ import {
 
         </DetailRow>
 
-
-
+    <VideoJsPlayer { ...videoJsOptions } />
     </MovieDetailsWrapper>
 
   </Contentdiv>
@@ -51,6 +63,6 @@ import {
 
 
  );
-
+    }
 
  export default VideoContent;

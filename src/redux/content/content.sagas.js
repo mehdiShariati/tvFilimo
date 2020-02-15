@@ -1,13 +1,16 @@
-import {takeLatest,put} from "redux-saga/effects";
+import {takeLatest,put,select} from "redux-saga/effects";
 import ContentTypes from "./content.types";
 import axios from "axios";
 import {startFetchingContentsSuccessFull,
     fetchingContentFail,
     fetchingSpecificMovieFaild,
     fetchingSpecificMovieSuccess} from "./content.actions";
+    import {SelectuserProfile} from "../user/user.selector";
+    
 
     const config={headers:{
-        UserAgent:`{"an":"Filimo","os":"tv"}`
+        UserAgent:`{"an":"Filimo","os":"tv"}`,
+       
     }}
 
 export function* fetchContent(){
@@ -33,8 +36,15 @@ export function* getContentFromApi(){
 
 
 export function* getMovieWithId({payload}){
+    let data = yield select(SelectuserProfile);
+    const dataConfig={headers:{
+        UserAgent:`{"an":"Filimo","os":"tv"}`,
+       luser:data.userName,
+       ltoken:data.ltoken
+    }}
+    yield console.log(data);
     try {
-        const MovieData=yield axios.get(`https://cors-anywhere.herokuapp.com/https://www.filimo.com/etc/api/groupCall/method1/movie%2Fuid%2F${payload}/method2/recom%2Fuid%2F${payload}%2Fperpage%2F20/method3/movieserialbyseason%2Fuid%2F${payload}/method4/profileaccount`,config);
+        const MovieData=yield axios.get(`https://cors-anywhere.herokuapp.com/https://www.filimo.com/etc/api/groupCall/method1/movie%2Fuid%2F${payload}/method2/recom%2Fuid%2F${payload}%2Fperpage%2F20/method3/movieserialbyseason%2Fuid%2F${payload}/method4/profileaccount`,dataConfig);
         const c=`movie/uid/${payload}`
         yield console.log("I am Here");
   
