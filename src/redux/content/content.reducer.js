@@ -4,7 +4,8 @@ const INITIAL_STATE={
     isDataFetching:false,
     error:null,
     movieContent:null,
-    isMovieLoading:false
+    isMovieLoading:false,
+    recom:null
 }
 
 const ContentReducer=(state=INITIAL_STATE,action)=>{
@@ -45,6 +46,19 @@ const ContentReducer=(state=INITIAL_STATE,action)=>{
                                 movieContent:null,
                                 isMovieLoading:false
                             }
+
+                            case ContentTypes.MOVIE_FETCHING_RECOMS:
+                                return{
+                                    ...state,
+                                    recom:action.payload
+                                }
+                                case ContentTypes.LOCATION_CHANGE:
+                                    return{
+                                        ...state,
+                                        movieContent:null,
+                                        isMovieLoading:false,
+                                        recom:null
+                                    }
 
             default:
                 return state;

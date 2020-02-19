@@ -33,3 +33,13 @@ export const fetchingSpecificMovieSuccess=content=>({
     type:ContentTypes.MOVIE_FETCHING_SUCCESS,
     payload:content
 })
+export const fetchingSpecificMovieRecomsSuccess=recom=>({
+    type:ContentTypes.MOVIE_FETCHING_RECOMS,
+    payload:recom
+})
+
+export const locChange=(id)=>({
+    type:ContentTypes.LOCATION_CHANGE,
+    payload:id
+
+})

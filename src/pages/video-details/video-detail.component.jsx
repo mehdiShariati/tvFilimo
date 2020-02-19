@@ -10,7 +10,7 @@ import {StartfetchingSpecificMovie} from "../../redux/content/content.actions";
 import VideoContent from "../../components/video-content/video-content.component";
 
 const VideoConentWithSpinner=WithSpinner(VideoContent);
-const VideoDetail=({match,startFetchingMovie,isLoadings,movie})=>{
+const VideoDetail=({match,startFetchingMovie,isLoadings,movie,recoms})=>{
 console.log(match.params);
 
 useEffect(()=>{
@@ -20,7 +20,7 @@ useEffect(()=>{
 return(
 
   <VideoDetailWrapper>
-      <VideoConentWithSpinner isLoading={!isLoadings} movieData={movie} ></VideoConentWithSpinner>
+      <VideoConentWithSpinner isLoading={!isLoadings} movieData={movie} recome={recoms} ></VideoConentWithSpinner>
 
   </VideoDetailWrapper>
 );
@@ -32,7 +32,8 @@ const mapDispatchToProps=dispatch=>({
 
 const mapStateToProps=state=>({
 isLoadings:state.contents.isMovieLoading,
-movie:state.contents.movieContent
+movie:state.contents.movieContent,
+recoms:state.contents.recom
 
 })
 

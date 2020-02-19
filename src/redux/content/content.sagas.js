@@ -3,7 +3,7 @@ import ContentTypes from "./content.types";
 import axios from "axios";
 import {startFetchingContentsSuccessFull,
     fetchingContentFail,
-    fetchingSpecificMovieFaild,
+    fetchingSpecificMovieFaild,fetchingSpecificMovieRecomsSuccess,
     fetchingSpecificMovieSuccess} from "./content.actions";
     import {SelectuserProfile} from "../user/user.selector";
     
@@ -17,7 +17,7 @@ export function* fetchContent(){
   
     try{
         
-        const contents=yield axios.get("https://cors-anywhere.herokuapp.com/https://www.filimo.com/etc/api/list/listtype/home/listperpage/5/listcuroffset/0",config);
+        const contents=yield axios.get("https://www.filimo.com/etc/api/list/listtype/home/listperpage/5/listcuroffset/0",config);
         yield put(startFetchingContentsSuccessFull(contents.data));
 
 
@@ -42,13 +42,16 @@ export function* getMovieWithId({payload}){
        luser:data.userName,
        ltoken:data.ltoken
     }}
-    yield console.log(data);
+ 
     try {
-        const MovieData=yield axios.get(`https://cors-anywhere.herokuapp.com/https://www.filimo.com/etc/api/groupCall/method1/movie%2Fuid%2F${payload}/method2/recom%2Fuid%2F${payload}%2Fperpage%2F20/method3/movieserialbyseason%2Fuid%2F${payload}/method4/profileaccount`,dataConfig);
-        const c=`movie/uid/${payload}`
-        yield console.log("I am Here");
+ 
+        const MovieData=yield axios.get(`https://www.filimo.com/etc/api/groupCall/method1/movie%2Fuid%2F${payload}/method2/recom%2Fuid%2F${payload}%2Fperpage%2F20/method3/movieserialbyseason%2Fuid%2F${payload}/method4/profileaccount`,dataConfig);
+        const movie=`movie/uid/${payload}`;
+        yield console.log(MovieData.data);
+       const Recom=`recom/uid/${payload}/perpage/20`;
+       yield put(fetchingSpecificMovieRecomsSuccess(MovieData.data.groupcall[Recom].recom));
+        yield put(fetchingSpecificMovieSuccess(MovieData.data.groupcall[movie]));
   
-        yield put(fetchingSpecificMovieSuccess(MovieData.data.groupcall[c]));
     
     } catch (error) {
         yield put(fetchingSpecificMovieFaild(error.message))
@@ -62,4 +65,10 @@ export function* getMovieWithId({payload}){
 export function* getMovieWithSpecificId(){
 
     yield takeLatest(ContentTypes.MOVIE_FETCHING_START,getMovieWithId)
+}
+
+
+export function* locationChange(){
+    
+    yield takeLatest(ContentTypes.LOCATION_CHANGE,getMovieWithId)
 }
