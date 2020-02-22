@@ -11,13 +11,15 @@ import HomePage from "./pages/home/homePage.component";
 import VideoDetail from "./pages/video-details/video-detail.component";
 import {startFetchingContents} from "./redux/content/content.actions";
 import VideoPlayerWrapper from "./components/video-player-wrapper/video-player-wrapper.component";
+import { withNavigation } from 'react-tv-navigation';
+
 
 const SignInpageWithSpinner=WithSpinner(SignIn);
 
 const HomePageWithSpinner=WithSpinner(HomePage);
 
 
-function App({isContentLoaded,startgettingData,startFetchingLoginData,Loading,LoginCred,currentUSer,profile}) {
+function App({focused, stealFocus,isContentLoaded,startgettingData,startFetchingLoginData,Loading,LoginCred,currentUSer,profile}) {
 
   useEffect(()=>{
     if(!Loading){
@@ -34,14 +36,15 @@ function App({isContentLoaded,startgettingData,startFetchingLoginData,Loading,Lo
    <div>
     
 
-      <Header user={currentUSer} profiles={profile}/>
+      <Header focusPath={"headerItem"} user={currentUSer} profiles={profile}/>
 
       <Switch>
+
       <Route exact path="/w/:movieId" component={VideoPlayerWrapper} />
       <Route exact path="/" render={props=><HomePageWithSpinner isLoading={!isContentLoaded} {...props} />} />
       <Route exact path="/signin" render={props=>currentUSer ? (<Redirect to="/" />) : (<SignInpageWithSpinner isLoading={!Loading} {...props} data={LoginCred} />)}  />
       {currentUSer ? (<Route exact path="/profile" component={Profile} />) : '' }
-      <Route exact path="/m/:movieId" component={VideoDetail} />
+      <Route exact path="/m/:movieId" component={VideoDetail } />
 
       
       
@@ -66,7 +69,7 @@ const mapStateToProps=state=>({
   isContentLoaded:state.contents.isDataFetching
 
 
-})
+});
 
-
-export default connect(mapStateToProps,mapDispatchToprops)(App);
+const withNav=withNavigation(App);
+export default connect(mapStateToProps,mapDispatchToprops)(withNav);

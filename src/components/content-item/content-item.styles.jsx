@@ -19,7 +19,33 @@ border-style: solid;
 border-color: transparent;
 border-image: initial;
 
+.titleHidden h5 {
+text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin: 2rem 1rem 1rem;
+    z-index:200;
+   
+    }
+.titleHidden{
+position:absolute;
+z-index:300;
+background:rgba(0,0,0,0.8);
+display:none;
+width:100%;
+height: 100%;
+}
 
+:focus{
+.titleHidden{
+    display:inline-block;
+
+  
+}
+
+border:6px solid orange;
+}
 
 `;
 
@@ -34,5 +60,14 @@ export const ImgMovie=styled.img`
     background-repeat: no-repeat;
     background-position: center center;
     overflow: hidden;
+
+`;
+
+export const EntitleWrapper=styled.p`
+text-align: center;
+    color: rgb(253, 193, 60);
+    font-size: 2rem;
+    line-height: 2rem;
+    margin: 1rem;
 
 `;

@@ -8,7 +8,7 @@ width: 100%;
     position: fixed;
     top: 0px;
     left: 0px;
-    z-index: 10;
+    z-index: 1;
     padding: 2rem 0px;
     border-top: 0.3rem solid rgb(253, 193, 60);
 
@@ -54,6 +54,9 @@ width: 5rem;
     background: rgba(255, 255, 255, 0.4);
     outline: none;
     padding: 0px;
+    :focus{
+    border:4px solid orange;
+    }
 
 `;
 
@@ -133,6 +136,9 @@ float: left;
     background: rgba(255, 255, 255, 0.4);
     outline: none;
     padding: 0px;
+    :focus{
+    border:4px solid orange;
+    }
 
 `;
 

@@ -6,11 +6,11 @@ import {HomePageContainer,
     TitleName,
     ContentCategory,
     HorizontalListWrapper,
-    TagnameButton,
+
 
 } from "./homePage.styles";
-
-
+import TagNameButton from "../../components/tag-name-button/tag-name-button.component";
+import { withNavigation } from 'react-tv-navigation';
 import ContentRow from "../../components/content-row/content-row.component";
 
 import {connect} from "react-redux";
@@ -18,7 +18,7 @@ const HomePage=({contents})=>{
    const dataaa=contents.list.list_data.filter((fil,index)=>index > 0);
    const tags=contents.list.list_data.filter((fil,index)=>index == 0);
 
-    console.log({tags});
+
 
 
 
@@ -36,11 +36,8 @@ return(
         </TitleWrapper>
         <ContentCategory>
 
-        <HorizontalListWrapper>
-{tags[0].data.map(item=>( <TagnameButton key={item.item_id}>{item.title}</TagnameButton>))}
-           
-        
-
+        <HorizontalListWrapper classname="tag-wrapper">
+{tags[0].data.map((item,index)=>( <TagNameButton title={item.title} focusPath={item.title+index} key={item.item_id} />))}
 
         </HorizontalListWrapper>
 
@@ -69,5 +66,5 @@ return(
 const mapStateToProps=state=>({
     contents:state.contents.content
 })
-
-export default connect(mapStateToProps,null)(HomePage);
+const homPagewithNavigation=withNavigation(HomePage);
+export default connect(mapStateToProps,null)(homPagewithNavigation);

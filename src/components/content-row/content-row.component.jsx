@@ -4,9 +4,16 @@ import ContentItem from "../content-item/content-item.component";
 import {Link,withRouter} from "react-router-dom";
 import {locChange} from "../../redux/content/content.actions";
 import {connect} from "react-redux";
+import { withFocusable, withNavigation } from 'react-tv-navigation';
 
-const ContentRow=({title,movieArray,history,locaChange})=>{
-console.log(movieArray);
+
+const ContentRow=({title,movieArray,history,locaChange,currentFocusPath})=>{
+
+    const FsTyle={
+        border:"4px solid orange",
+        opacity:"0.2"
+
+    };
 return(
         <ContentRowWrapper>
                 <TitleWrapper>
@@ -19,7 +26,7 @@ return(
                <ContentWrapper>
                 <HorizontalList>
 
-                {movieArray.map(item=>(<a onClick={()=>{ locaChange(item.uid); history.push(`/m/${item.uid}`) }}  key={item.uid}><ContentItem key={item.uid} image={item.movie_img_b}  /></a>))}
+                {movieArray.map((item,index)=>(<a onClick={()=>{ locaChange(item.uid); history.push(`/m/${item.uid}`) }}  key={item.uid}><ContentItem enTitle={item.movie_title_en} title={item.movie_title}  focusPath={item.uid+index} key={item.uid} image={item.movie_img_b}  /></a> )) }
 
 
                 </HorizontalList>
@@ -33,6 +40,6 @@ return(
 )};
 const mapDispatchToProps=dispatch=>({
     locaChange:(id)=>dispatch(locChange(id))
-})
-
-export default withRouter(connect(null,mapDispatchToProps)(ContentRow));
+});
+const ContetrowWithNavigation=withNavigation(ContentRow);
+export default withRouter(connect(null,mapDispatchToProps)(ContetrowWithNavigation));

@@ -6,16 +6,26 @@ import "video.js/dist/video-js.css";
 export default class VideoJSPlayer extends React.Component {
   componentDidMount() {
     // instantiate Video.js
-    console.log();
+    const sub=this.props.movie.subtitle_data.subtitle[0];
+
+
     const videoJsOptions = {
       autoplay: true,
       controls: true,
       sources: [{
         src: this.props.movie.movie_src,
         type: 'application/vnd.apple.mpegurl'
-      }]
+      }],
+      tracks:[]
+
+    };
+    if(sub !== undefined) {
+      videoJsOptions.tracks = [{
+        src: this.props.movie.subtitle_data.subtitle[0].src_vtt,
+        srclang: this.props.movie.subtitle_data.subtitle[0].lng_fa
+      }];
     }
-    console.log(this.props.movie.movie_src);
+
     this.player = videojs(this.videoNode, videoJsOptions, function onPlayerReady() {
       console.log('onPlayerReady', this)
     });

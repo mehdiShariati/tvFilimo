@@ -6,7 +6,7 @@ width: 100%;
     z-index: 2;
     opacity: 1;
     float: right;
-    overflow-x:scroll;
+    overflow:hidden;
 
 `;
 

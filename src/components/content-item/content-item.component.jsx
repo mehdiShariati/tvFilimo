@@ -1,10 +1,22 @@
 import React from "react";
 import {ItemWrapper,
-    ImgMovie} from "./content-item.styles"
+    ImgMovie,EntitleWrapper} from "./content-item.styles"
+import { withFocusable } from 'react-tv-navigation'
 
 
-const ContentItem=({image})=>(
-<ItemWrapper>
+const ContentItem=({enTitle,image,focused, setFocus, focusPath,title,currentFocusPath})=>{
+   focused = (focused) ? 'focused' : 'unfocused';
+
+    return(
+<ItemWrapper  >
+     <div className="titleHidden"  onClick={() => { setFocus() }} >
+         <h5>{title}</h5>
+         <EntitleWrapper>
+             {enTitle}
+         </EntitleWrapper>
+    </div>
+
+
 
 <ImgMovie key={Math.random()} src={image} />
 
@@ -12,8 +24,8 @@ const ContentItem=({image})=>(
 </ItemWrapper>
 
 
-);
+)};
 
 
 
-export default ContentItem;
+export default withFocusable(ContentItem);

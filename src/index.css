@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'IRANSans';
+  font-style: normal;
+  font-weight: normal;
+  src:  url('https://tv.filimo.com/84518599d382334f09e67ade7fc530a0.woff2') format('woff2');
+}
+
+
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -23,14 +33,12 @@ html, body {
   height: 100%;
   direction: rtl;
   font-family: IRANSans, sans-serif, serif;
-  font-weight: normal;
+  font-weight: bold;
+
   padding: 0px;
   margin: 0px;
   background: rgb(38, 38, 38);
-  overflow-x: hidden;
-
-}
-
+  overflow: hidden;}
 body {
   line-height: 2.4rem;
   user-select: none;
@@ -50,4 +58,16 @@ button, input {
 }
 button, select {
   text-transform: none;
+}
+#root{
+
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+  overflow: hidden;
+  width: 100%;
+  height: 687.09px;
 }
