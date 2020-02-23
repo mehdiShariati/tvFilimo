@@ -14,7 +14,7 @@ width: 100%;
 
 export const ListContainer=Styled.div`
 margin-top: 0px;
-transition-duration: 0.2s;
+transition-duration: 0.3s;
 overflow:hidden;
 margin-right:10px;
 

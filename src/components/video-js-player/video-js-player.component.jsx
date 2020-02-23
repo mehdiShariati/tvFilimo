@@ -46,7 +46,7 @@ export default class VideoJSPlayer extends React.Component {
   // see https://github.com/videojs/video.js/pull/3856
   render() {
     return (
-      <div style={{zIndex:90,position:"fixed",top:"0",right:"0",left:"0",bottom:"0",width:"100%",height:"100%"}}     >	
+      <div style={{zIndex:3000,position:"fixed",top:"0",right:"0",left:"0",bottom:"0",width:"100%",height:"100%"}}     >
         <div data-vjs-player style={{width:"100%",height:"100%"}}>
           <video ref={ node => this.videoNode = node }   className="vjs-matrix video-js"></video>
         </div>

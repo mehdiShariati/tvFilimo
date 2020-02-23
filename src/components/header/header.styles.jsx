@@ -8,9 +8,11 @@ width: 100%;
     position: fixed;
     top: 0px;
     left: 0px;
-    z-index: 1;
-    padding: 2rem 0px;
+    z-index: 2000;
+    padding: 1rem 0px;
+    background-color:rgb(38, 38, 38);
     border-top: 0.3rem solid rgb(253, 193, 60);
+    height:2.2rem;
 
 `;
 

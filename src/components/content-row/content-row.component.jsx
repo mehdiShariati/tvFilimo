@@ -16,17 +16,18 @@ const ContentRow=({title,movieArray,history,locaChange,currentFocusPath})=>{
     };
 return(
         <ContentRowWrapper>
+            <TitleText >
+                {title}
+            </TitleText>
                 <TitleWrapper>
-                <TitleText >
-                    {title}
-                </TitleText>
+
 
                 </TitleWrapper>
 
                <ContentWrapper>
                 <HorizontalList>
 
-                {movieArray.map((item,index)=>(<a onClick={()=>{ locaChange(item.uid); history.push(`/m/${item.uid}`) }}  key={item.uid}><ContentItem enTitle={item.movie_title_en} title={item.movie_title}  focusPath={item.uid+index} key={item.uid} image={item.movie_img_b}  /></a> )) }
+                {movieArray.map((item,index)=>(<a onClick={()=>{ locaChange(item.uid); history.push(`/m/${item.uid}`) }}  key={item.uid}><ContentItem enTitle={item.movie_title_en} title={item.movie_title}  focusPath={item.uid+index+Math.random()} key={item.uid} image={item.movie_img_b}  /></a> )) }
 
 
                 </HorizontalList>

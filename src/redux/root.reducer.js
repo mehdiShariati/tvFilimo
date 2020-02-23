@@ -3,18 +3,20 @@ import {persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import userReducer from "./user/user.reducer";
 import ContentReducer from "./content/content.reducer";
+import SearchReducer from "./search/search.reducer";
 const persistConfig={
     key:"root",
     storage,
     whitelist:[
         'user'
     ]
-}
+};
 
 const rootReducer= combineReducers({
     user:userReducer,
-    contents:ContentReducer
+    contents:ContentReducer,
+    search:SearchReducer
 
-})
+});
 
 export default persistReducer(persistConfig, rootReducer);

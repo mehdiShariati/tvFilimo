@@ -12,7 +12,7 @@ import VideoDetail from "./pages/video-details/video-detail.component";
 import {startFetchingContents} from "./redux/content/content.actions";
 import VideoPlayerWrapper from "./components/video-player-wrapper/video-player-wrapper.component";
 import { withNavigation } from 'react-tv-navigation';
-
+import SearchPage from "./pages/search/searchPage.components";
 
 const SignInpageWithSpinner=WithSpinner(SignIn);
 
@@ -39,7 +39,7 @@ function App({focused, stealFocus,isContentLoaded,startgettingData,startFetching
       <Header focusPath={"headerItem"} user={currentUSer} profiles={profile}/>
 
       <Switch>
-
+       <Route exact path="/search" component={SearchPage} />
       <Route exact path="/w/:movieId" component={VideoPlayerWrapper} />
       <Route exact path="/" render={props=><HomePageWithSpinner isLoading={!isContentLoaded} {...props} />} />
       <Route exact path="/signin" render={props=>currentUSer ? (<Redirect to="/" />) : (<SignInpageWithSpinner isLoading={!Loading} {...props} data={LoginCred} />)}  />

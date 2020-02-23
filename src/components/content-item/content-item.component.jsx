@@ -1,7 +1,7 @@
 import React from "react";
 import {ItemWrapper,
-    ImgMovie,EntitleWrapper} from "./content-item.styles"
-import { withFocusable } from 'react-tv-navigation'
+    ImgMovie,EntitleWrapper} from "./content-item.styles";
+import { withFocusable } from 'react-tv-navigation';
 
 
 const ContentItem=({enTitle,image,focused, setFocus, focusPath,title,currentFocusPath})=>{

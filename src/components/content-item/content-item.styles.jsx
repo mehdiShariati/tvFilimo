@@ -11,7 +11,7 @@ cursor: pointer;
 box-sizing: border-box;
 position: relative;
 width: 18rem;
-height: 24rem;
+height: 23rem;
 padding: 0px;
 overflow: hidden;
 border-width: 0.45rem;

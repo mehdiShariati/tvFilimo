@@ -101,6 +101,9 @@ width: calc(100% - 17rem);
     border-color: transparent;
     border-image: initial;
     outline: none;
+    :focus{
+    border:3px solid orange;
+    }
     
     `;
 
